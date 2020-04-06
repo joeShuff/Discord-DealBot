@@ -1,9 +1,38 @@
+import os
+import json
+
+import discord
+
+cwd = os.getcwd()
+
 
 async def send_help(bot, message):
-    help_string = "I can currently do the following commands.\n" + \
-                  "- `:deal <search term>` e.g. `:deal minecraft`\n" + \
-                  "- `:store <store name>` e.g. `:store steam` so search Steam for the top deals. Only a few stores are supported.\n" + \
-                  "- `:free <store name>` e.g. `:free steam` This will search the Steam store for free games!\n\n" + \
-                  "New features coming soon:tm:"
+    loaded_json = {}
+    with open(cwd + '/commands.json', 'r') as myfile:
+        loaded_json = json.loads(myfile.read().replace('\n', ''))
 
-    await message.channel.send(help_string)
+    embed_response = discord.Embed(title="DealBot Help", description="", color=0x046EB2)
+
+    categories = []
+
+    for command in loaded_json['commands']:
+        this_cat = command['category']
+
+        found_cat = False
+        for existing_cat in categories:
+            if existing_cat['name'] == this_cat['name']:
+                found_cat = True
+
+        if not found_cat:
+            categories.append(this_cat)
+
+    for category in categories:
+        cat_value = ""
+
+        for command in loaded_json['commands']:
+            if command['category']['name'] == category['name']:
+                cat_value += "-[**" + str(command['name']) + "**](https://www.github.com/joeShuff/Discord-DealBot '" + str(command['description']) + "') `" + str(command['syntax']) + "`\n"
+
+        embed_response.add_field(name=category['display_name'], value=cat_value, inline=False)
+
+    await message.channel.send(embed=embed_response)
