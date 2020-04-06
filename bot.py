@@ -82,8 +82,8 @@ async def loop_before():
 # loop.start()
 
 token = ""
-with open(cwd + '/token.txt', 'r') as myfile:
-# with open(cwd + '/test_bot_token.txt', 'r') as myfile:
+# with open(cwd + '/token.txt', 'r') as myfile:
+with open(cwd + '/test_bot_token.txt', 'r') as myfile:
     token = myfile.read().replace('\n', '')
 
 # client.loop.create_task(Poll.update_polls(client))

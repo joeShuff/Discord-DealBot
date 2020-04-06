@@ -1,0 +1,64 @@
+{
+	"categories": [
+		{
+			"name":"find_deals",
+			"display_name": ":moneybag: Find Deals",
+			"order": 0
+		},
+		{
+			"name":"help",
+			"display_name": ":question: Helpful Commands",
+			"order": 1
+		}
+	],
+	"commands":[
+		{
+			"command": ":deal",
+			"name": "Deal",
+			"syntax": ":deal <search term>",
+			"example": ":deal minecraft dungeons",
+			"description": "Search for deals on your favourite games.",
+			"category": {
+				"name":"find_deals",
+				"display_name": ":moneybag: Find Deals",
+				"order": 0
+			}
+		},
+		{
+			"command": ":store",
+			"name": "Store",
+			"syntax": ":store <store name>",
+			"example": ":store steam",
+			"description": "Search stores for deals. (Supports limited stores)",
+			"category": {
+				"name":"find_deals",
+				"display_name": ":moneybag: Find Deals",
+				"order": 0
+			}
+		},
+		{
+			"command": ":free",
+			"name": "Free",
+			"syntax": ":free <store name>",
+			"example": ":free steam",
+			"description": "Search stores for free games! (Supports limited stores)",
+			"category": {
+				"name":"find_deals",
+				"display_name": ":moneybag: Find Deals",
+				"order": 0
+			}
+		},
+		{
+			"command": ":clean",
+			"name": "Clean",
+			"syntax": ":clean",
+			"example": ":clean",
+			"description": "Clean recent messages from the bot and commands to do with the bot.",
+			"category": {
+				"name":"help",
+				"display_name": ":question: Helpful Commands",
+				"order": 1
+			}
+		}
+	]
+}
