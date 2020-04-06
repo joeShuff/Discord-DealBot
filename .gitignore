@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+itad.json
+
+token.txt
+
+test_bot_token.txt
