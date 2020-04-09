@@ -46,8 +46,9 @@ async def on_message(message):
         return
 
     ##If it's the live bot on the test server, ignore!
-    if str(message.guild.id) == "403277441650393099" and str(bot.user.id) == "693532784798466048":
-        return
+    if message.guild is not None:
+        if str(message.guild.id) == "403277441650393099" and str(bot.user.id) == "693532784798466048":
+            return
 
     if not message.content.startswith(":"):
         return
