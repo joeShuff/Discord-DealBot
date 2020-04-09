@@ -47,6 +47,15 @@
 			"example": ":clean",
 			"description": "Clean recent messages from the bot and commands to do with the bot.",
 			"category": "help"
+		},
+		{
+			"command": ":help",
+			"name": "help",
+			"display_name": "Help",
+			"syntax": ":help",
+			"example": ":help",
+			"description": "View available commands to use with this bot",
+			"category": "help"
 		}
 	]
 }

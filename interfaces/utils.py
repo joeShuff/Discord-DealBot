@@ -1,7 +1,7 @@
 import discord
 import datetime
 
-from itad_api import store_emojis
+from interfaces.itad_api import store_emojis
 
 
 def get_distinct_game_plains(deals):

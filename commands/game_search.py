@@ -1,5 +1,6 @@
-from itad_api import *
-from utils import get_deal_list_embed
+from interfaces.itad_api import *
+from interfaces.utils import get_deal_list_embed
+import datetime
 import discord
 
 

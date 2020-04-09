@@ -3,12 +3,11 @@ import json
 
 import discord
 
-from commands.CommandManager import load_commands_and_categories
-
 cwd = os.getcwd()
 
 
 async def send_help(bot, message):
+    from commands.CommandManager import load_commands_and_categories
     loaded_commands, loaded_categories = load_commands_and_categories()
 
     embed_response = discord.Embed(title="DealBot Help", description="Hover on command for info", color=0x046EB2)

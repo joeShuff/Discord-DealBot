@@ -1,7 +1,8 @@
-from itad_api import *
+from interfaces.itad_api import *
 import discord
+import datetime
 
-from utils import get_deal_list_embed
+from interfaces.utils import get_deal_list_embed
 
 supported_stores = {
     "steam": [

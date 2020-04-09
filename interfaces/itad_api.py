@@ -1,10 +1,9 @@
 import os
 import json
 import requests
-import datetime
 import urllib
 
-from GameWithDeal import GameWithDeal, GameReviews, SteamReviews
+from models.GameWithDeal import GameWithDeal, GameReviews, SteamReviews
 
 cwd = os.getcwd()
 
