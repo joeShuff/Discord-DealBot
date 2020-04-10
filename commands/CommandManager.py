@@ -7,7 +7,7 @@ from commands.store_search import deals_for_store
 
 cwd = os.getcwd()
 
-prefix = ":"
+prefix = "?"
 
 bot_user = None
 
@@ -48,18 +48,23 @@ async def process_command(bot, message):
         return
 
     message_content = message.content[1:]
+    command = message_content.split(" ")[0]
 
-    if message.content.startswith(":deal "):
+    executed_command = next((x for x in load_commands() if x['name'] == command), None)
+
+    if executed_command is None:
+        await channel.send("I'm afraid I don't recognise that command. Try `" + str(prefix) + "help`")
+    elif executed_command['name'] == "deal":
         sent = await channel.send("Loading deals...")
         await get_deals_for(bot, message, sent)
-    elif message.content.startswith(":store "):
+    elif executed_command['name'] == "store":
         sent = await channel.send("Loading deals...")
         await deals_for_store(bot, message, sent)
-    elif message.content.startswith(":free "):
+    elif executed_command['name'] == "free":
         sent = await channel.send("Loading deals...")
         await deals_for_store(bot, message, sent, sort="price:asc", free_only=True)
-    elif message.content.startswith(":help"):
+    elif executed_command['name'] == "help":
         await send_help(bot, message)
-    elif message.content.startswith(":clean"):
+    elif executed_command['name'] == "clean":
         deleted = await message.channel.purge(check=message_is_to_do_with_bot)
         await message.channel.send('Deleted {} message(s)'.format(len(deleted)), delete_after=10)

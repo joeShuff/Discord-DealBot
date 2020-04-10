@@ -21,9 +21,10 @@ commands = [
 
 @bot.event
 async def on_ready():
+    from commands.CommandManager import prefix
     print("on READY")
     await bot.change_presence(status=discord.Status.online,
-                              activity=discord.Game(name="Try :help"))
+                              activity=discord.Game(name="Try <pref>help".replace("<pref>", prefix)))
 
 
 @bot.event

@@ -5,7 +5,9 @@ import discord
 
 
 async def get_deals_for(bot, message, to_update):
-    search_term = message.content.replace(":deal ", "")
+    from commands.CommandManager import prefix
+    search_term = message.content.replace("<pref>deal ".replace("<pref>", prefix), "")
+
     try:
         deal_list = search_game(search_term)
 

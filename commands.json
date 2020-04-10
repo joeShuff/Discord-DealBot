@@ -13,47 +13,47 @@
 	],
 	"commands":[
 		{
-			"command": ":deal",
+			"command": "<pref>deal",
 			"name": "deal",
 			"display_name": "Deal",
-			"syntax": ":deal <search term>",
-			"example": ":deal minecraft dungeons",
+			"syntax": "<pref>deal <search term>",
+			"example": "<pref>deal minecraft dungeons",
 			"description": "Search for deals on your favourite games.",
 			"category": "find_deals"
 		},
 		{
-			"command": ":store",
+			"command": "<pref>store",
 			"name": "store",
 			"display_name": "Store",
-			"syntax": ":store <store name>",
-			"example": ":store steam",
+			"syntax": "<pref>store <store name>",
+			"example": "<pref>store steam",
 			"description": "Search stores for deals. (Supports limited stores)",
 			"category": "find_deals"
 		},
 		{
-			"command": ":free",
+			"command": "<pref>free",
 			"name": "free",
 			"display_name": "Free",
-			"syntax": ":free <store name>",
-			"example": ":free steam",
+			"syntax": "<pref>free <store name>",
+			"example": "<pref>free steam",
 			"description": "Search stores for free games! (Supports limited stores)",
 			"category": "find_deals"
 		},
 		{
-			"command": ":clean",
+			"command": "<pref>clean",
 			"name": "clean",
-			"display_name": " Clean",
-			"syntax": ":clean",
-			"example": ":clean",
+			"display_name": "Clean",
+			"syntax": "<pref>clean",
+			"example": "<pref>clean",
 			"description": "Clean recent messages from the bot and commands to do with the bot.",
 			"category": "help"
 		},
 		{
-			"command": ":help",
+			"command": "<pref>help",
 			"name": "help",
 			"display_name": "Help",
-			"syntax": ":help",
-			"example": ":help",
+			"syntax": "<pref>help",
+			"example": "<pref>help",
 			"description": "View available commands to use with this bot",
 			"category": "help"
 		}
