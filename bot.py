@@ -11,13 +11,6 @@ from interfaces.utils import *
 cwd = os.getcwd()
 bot = Bot(":")
 
-commands = [
-    ":deal",
-    ":store",
-    ":clean",
-    ":free",
-    ":help"
-]
 
 @bot.event
 async def on_ready():

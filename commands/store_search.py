@@ -39,7 +39,7 @@ def store_from_search(search):
     return None
 
 
-async def deals_for_store(bot, message, to_update, sort="cut:desc", free_only=False):
+async def deals_for_store(bot, message, to_update, sort="cut:desc", free_only=False, region="eu2"):
     from commands.CommandManager import prefix
     search_term = message.content \
         .replace("<pref>store ".replace("<pref>", prefix), "") \
@@ -57,7 +57,7 @@ async def deals_for_store(bot, message, to_update, sort="cut:desc", free_only=Fa
         return
 
     try:
-        store_deals = search_store(store, sort=sort, free_only=free_only)[:10]
+        store_deals = search_store(store, sort=sort, free_only=free_only, region=region)[:10]
 
         if len(store_deals) > 0:
             store_name = store_deals[0].shop_name

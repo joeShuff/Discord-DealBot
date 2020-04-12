@@ -10,9 +10,9 @@ session = None
 
 
 class RegionConfiguration(Base):
-    __tablename__= 'region_config'
-    channel_id= Column(String(255), primary_key=True)
-    region= Column(String(255))
+    __tablename__ = 'region_config'
+    channel_id = Column(String(255), primary_key=True)
+    region = Column(String(255))
 
 
 engine = create_engine('sqlite:///dealbot_config.db')
@@ -31,4 +31,8 @@ def set_region(channel_id, region):
 
 def get_region(channel_id):
     session = scoped_session(sessionmaker(bind=engine))
-    return session.query(RegionConfiguration).filter_by(channel_id=channel_id).first()
+    result = session.query(RegionConfiguration).filter_by(channel_id=channel_id).first()
+    if result is None:
+        return "eu2"
+    else:
+        return result.region

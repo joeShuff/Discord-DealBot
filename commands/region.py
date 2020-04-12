@@ -27,7 +27,10 @@ async def set_region_for_channel(bot, message):
         confirm_embed = discord.Embed(
             color=0x046EB2,
             title="Set Region",
-            description="<flag> Successfully updated region for `".replace("<flag>", region_flag) + str(message.channel.name) + "` to " + str(chosen_region.upper())
+            description="<flag> Successfully updated region for `<chan>` to <reg> <flag>"
+                .replace("<flag>", str(region_flag))
+                .replace("<chan>", str(message.channel.name))
+                .replace("<reg>", str(chosen_region).upper())
         )
 
         await message.channel.send(embed=confirm_embed)

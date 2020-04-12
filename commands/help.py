@@ -22,6 +22,9 @@ async def send_help(bot, message):
             if command['category'] == category['name']:
                 cat_value += "- [**" + str(command['display_name']) + "**](https://www.github.com/joeShuff/Discord-DealBot '" + str(command['description']) + "') `" + str(command['syntax'].replace("<pref>", prefix)) + "`\n"
 
+        if len(cat_value) == 0:
+            cat_value = "No commands in this category."
+
         embed_response.add_field(name=category['display_name'], value=cat_value, inline=False)
 
     await message.channel.send(embed=embed_response)

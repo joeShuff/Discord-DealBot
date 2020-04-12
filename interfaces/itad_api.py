@@ -117,12 +117,15 @@ def deal_to_game_with_deal(deal, currency="USD"):
     return get_gamewithdeal_fromapi(deal, game_info, currency)
 
 
-def search_game(search_term):
-    base_req = "https://api.isthereanydeal.com/v01/search/search/?key=%key&q=%search"
+def search_game(search_term, region="eu2"):
+    base_req = "https://api.isthereanydeal.com/v01/search/search/?key=%key&q=%search&region=%region"
 
     key = get_api_key()
 
-    final_req = base_req.replace("%key", key).replace("%search", search_term)
+    final_req = base_req\
+        .replace("%key", key)\
+        .replace("%search", search_term)\
+        .replace("%region", region)
 
     resp = requests.get(final_req)
     json_resp = json.loads(resp.content)
@@ -134,14 +137,15 @@ def search_game(search_term):
 
     return deal_list
 
-def search_store(search_term, sort="cut:desc", free_only=False):
-    base_req = "https://api.isthereanydeal.com/v01/deals/list/?key=%key&shops=%shops&sort=%sort&limit=100"
+def search_store(search_term, region="eu2", sort="cut:desc", free_only=False):
+    base_req = "https://api.isthereanydeal.com/v01/deals/list/?key=%key&shops=%shops&sort=%sort&limit=100&region=%region"
 
     key = get_api_key()
 
     final_req = base_req\
         .replace("%key", key)\
         .replace("%sort", sort)\
+        .replace("%region", region)\
         .replace("%shops", urllib.parse.quote_plus(search_term))
 
     resp = requests.get(final_req)

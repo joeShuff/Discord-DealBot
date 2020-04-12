@@ -5,6 +5,7 @@ from commands.game_search import get_deals_for
 from commands.help import send_help
 from commands.region import set_region_for_channel
 from commands.store_search import deals_for_store
+from db.db_controller import get_region
 
 cwd = os.getcwd()
 
@@ -16,7 +17,7 @@ def message_is_to_do_with_bot(m):
     is_command = False
 
     for command in map(lambda x: x['command'], load_commands()):
-        if m.content.startswith(command):
+        if m.content.startswith(command.replace("<pref>", prefix)):
             is_command = True
 
     return m.author == bot_user.user or is_command
@@ -61,13 +62,13 @@ async def process_command(bot, message):
 
     if command == "deal":
         sent = await channel.send("Loading deals...")
-        await get_deals_for(bot, message, sent)
+        await get_deals_for(bot, message, sent, region=get_region(channel.id))
     elif command == "store":
         sent = await channel.send("Loading deals...")
-        await deals_for_store(bot, message, sent)
+        await deals_for_store(bot, message, sent, region=get_region(channel.id))
     elif command == "free":
         sent = await channel.send("Loading deals...")
-        await deals_for_store(bot, message, sent, sort="price:asc", free_only=True)
+        await deals_for_store(bot, message, sent, sort="price:asc", free_only=True, region=get_region(channel.id))
     elif command == "help":
         await send_help(bot, message)
     elif command == "region":
