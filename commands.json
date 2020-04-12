@@ -29,6 +29,7 @@
 			"syntax": "<pref>deal <search term>",
 			"example": "<pref>deal minecraft dungeons",
 			"description": "Search for deals on your favourite games.",
+			"long_description": "",
 			"category": "find_deals"
 		},
 		{
@@ -38,6 +39,7 @@
 			"syntax": "<pref>store <store name>",
 			"example": "<pref>store steam",
 			"description": "Search stores for deals. (Supports limited stores)",
+			"long_description": "",
 			"category": "find_deals"
 		},
 		{
@@ -47,6 +49,7 @@
 			"syntax": "<pref>free <store name>",
 			"example": "<pref>free steam",
 			"description": "Search stores for free games! (Supports limited stores)",
+			"long_description": "",
 			"category": "find_deals"
 		},
 		{
@@ -56,15 +59,17 @@
 			"syntax": "<pref>clean",
 			"example": "<pref>clean",
 			"description": "Clean recent messages from the bot and commands to do with the bot.",
+			"long_description": "",
 			"category": "help"
 		},
 		{
 			"command": "<pref>help",
 			"name": "help",
 			"display_name": "Help",
-			"syntax": "<pref>help",
-			"example": "<pref>help",
-			"description": "View available commands to use with this bot",
+			"syntax": "<pref>help <optional: command>",
+			"example": "<pref>help | <pref>help store",
+			"description": "View available commands to use with this bot and get help with specific commands",
+			"long_description": "",
 			"category": "help"
 		},
 		{
@@ -72,8 +77,9 @@
 			"name": "region",
 			"display_name": "Region",
 			"syntax": "<pref>region <region code>",
-			"example": "<pref>region gb",
+			"example": "<pref>region us",
 			"description": "Set the region to search for game deals for. This is a channel specific setting.",
+			"long_description": "\nPossible regions are as follows (case insensitive):\n```AU2\nBR2\nCA\nCN\nEU1\nEU2\nRU\nTR\nUK\nUS```",
 			"category": "settings"
 		}
 	]
