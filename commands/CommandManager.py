@@ -74,5 +74,5 @@ async def process_command(bot, message):
     elif command == "region":
         await set_region_for_channel(bot, message)
     elif command == "clean":
-        deleted = await message.channel.purge(check=message_is_to_do_with_bot)
+        deleted = await message.channel.purge(check=message_is_to_do_with_bot, limit=50)
         await message.channel.send('Deleted {} message(s)'.format(len(deleted)), delete_after=10)

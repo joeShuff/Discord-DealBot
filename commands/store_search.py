@@ -4,6 +4,7 @@ import datetime
 
 from interfaces.utils import get_deal_list_embed
 
+##Stores other possible ways to write the store to successfully match it
 supported_stores = {
     "steam": [
 
