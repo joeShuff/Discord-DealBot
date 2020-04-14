@@ -1,12 +1,15 @@
-from itad_api import *
-from utils import get_deal_list_embed
+from interfaces.itad_api import *
+from interfaces.utils import get_deal_list_embed
+import datetime
 import discord
 
 
-async def get_deals_for(bot, message, to_update):
-    search_term = message.content.replace(":deal ", "")
+async def get_deals_for(bot, message, to_update, region="eu2"):
+    from commands.CommandManager import prefix
+    search_term = message.content.replace("<pref>deal ".replace("<pref>", prefix), "")
+
     try:
-        deal_list = search_game(search_term)
+        deal_list = search_game(search_term, region=region)
 
         results_embed = discord.Embed(
             color=0x046EB2,
