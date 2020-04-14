@@ -24,12 +24,18 @@ async def set_region_for_channel(bot, message):
         chosen_region = get_region(message.channel.id)
         region_flag = possible_regions[chosen_region.upper()]
 
+        channel_name = ""
+        if isinstance(message.channel, discord.DMChannel):
+            channel_name = str(message.channel.recipient)
+        else:
+            channel_name = str(message.channel.name)
+
         current_region_embed = discord.Embed(
             color=0x046EB2,
             title="Current Region",
             description="<flag> Your current region for `<chan>` is <reg> <flag>"
                 .replace("<flag>", str(region_flag))
-                .replace("<chan>", str(message.channel.name))
+                .replace("<chan>", channel_name)
                 .replace("<reg>", str(chosen_region).upper())
         )
 
@@ -39,12 +45,18 @@ async def set_region_for_channel(bot, message):
             set_region(message.channel.id, chosen_region)
             region_flag = possible_regions[chosen_region.upper()]
 
+            channel_name = ""
+            if isinstance(message.channel, discord.DMChannel):
+                channel_name = str(message.channel.recipient)
+            else:
+                channel_name = str(message.channel.name)
+
             confirm_embed = discord.Embed(
                 color=0x046EB2,
                 title="Set Region",
                 description="<flag> Successfully updated region for `<chan>` to <reg> <flag>"
                     .replace("<flag>", str(region_flag))
-                    .replace("<chan>", str(message.channel.name))
+                    .replace("<chan>", channel_name)
                     .replace("<reg>", str(chosen_region).upper())
             )
 
