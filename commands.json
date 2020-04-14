@@ -6,9 +6,19 @@
 			"order": 0
 		},
 		{
+			"name": "deal_notifications",
+			"display_name": ":bell: Deal Notifications",
+			"order": 1
+		},
+		{
+			"name": "settings",
+			"display_name": ":gear: Settings",
+			"order": 2
+		},
+		{
 			"name":"help",
 			"display_name": ":question: Helpful Commands",
-			"order": 1
+			"order": 3
 		}
 	],
 	"commands":[
@@ -19,6 +29,12 @@
 			"syntax": "<pref>deal <search term>",
 			"example": "<pref>deal minecraft dungeons",
 			"description": "Search for deals on your favourite games.",
+			"long_description": "",
+			"parameters": [{
+					"name": "search term",
+					"description": "The game you wish to search for deals for",
+					"values": []
+				}],
 			"category": "find_deals"
 		},
 		{
@@ -28,6 +44,21 @@
 			"syntax": "<pref>store <store name>",
 			"example": "<pref>store steam",
 			"description": "Search stores for deals. (Supports limited stores)",
+			"long_description": "",
+			"parameters": [
+				{
+					"name": "store name",
+					"description": "The store you wish to search through.",
+					"values": [
+						"steam",
+						"epic",
+						"gog",
+						"humblestore",
+						"uplay",
+						"microsoft"
+					]
+				}
+			],
 			"category": "find_deals"
 		},
 		{
@@ -37,6 +68,21 @@
 			"syntax": "<pref>free <store name>",
 			"example": "<pref>free steam",
 			"description": "Search stores for free games! (Supports limited stores)",
+			"long_description": "",
+			"parameters": [
+				{
+					"name": "store name",
+					"description": "The store you wish to search through.",
+					"values": [
+						"steam",
+						"epic",
+						"gog",
+						"humblestore",
+						"uplay",
+						"microsoft"
+					]
+				}
+			],
 			"category": "find_deals"
 		},
 		{
@@ -46,16 +92,54 @@
 			"syntax": "<pref>clean",
 			"example": "<pref>clean",
 			"description": "Clean recent messages from the bot and commands to do with the bot.",
+			"long_description": "Searches the 50 most recent messages.",
+			"parameters": [],
 			"category": "help"
 		},
 		{
 			"command": "<pref>help",
 			"name": "help",
 			"display_name": "Help",
-			"syntax": "<pref>help",
-			"example": "<pref>help",
-			"description": "View available commands to use with this bot",
+			"syntax": "<pref>help <optional: command>",
+			"example": "<pref>help | <pref>help store",
+			"description": "View available commands to use with this bot and get help with specific commands",
+			"long_description": "",
+			"parameters": [
+				{
+					"name": "command",
+					"description": "The specific command to get help for, use the name of the command e.g. `deal`",
+					"values": []
+				}
+			],
 			"category": "help"
+		},
+		{
+			"command": "<pref>region",
+			"name": "region",
+			"display_name": "Region",
+			"syntax": "<pref>region <optional: region code>",
+			"example": "<pref>region us",
+			"description": "Set the region to search for game deals for. This is a channel specific setting.",
+			"long_description": "",
+			"parameters": [
+				{
+					"name": "region code",
+					"description": "The region to search for deals in. These are set by isthereanydeal.com. If you don't provide one, the bot will show you the channels current region.",
+					"values": [
+						"AU2",
+						"BR2",
+						"CA",
+						"CN",
+						"EU1",
+						"EU2",
+						"RU",
+						"TR",
+						"UK",
+						"US"
+					]
+				}
+			],
+			"category": "settings"
 		}
 	]
 }

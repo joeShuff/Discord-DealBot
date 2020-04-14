@@ -4,12 +4,12 @@ import datetime
 import discord
 
 
-async def get_deals_for(bot, message, to_update):
+async def get_deals_for(bot, message, to_update, region="eu2"):
     from commands.CommandManager import prefix
     search_term = message.content.replace("<pref>deal ".replace("<pref>", prefix), "")
 
     try:
-        deal_list = search_game(search_term)
+        deal_list = search_game(search_term, region=region)
 
         results_embed = discord.Embed(
             color=0x046EB2,
