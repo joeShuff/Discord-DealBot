@@ -140,6 +140,40 @@
 				}
 			],
 			"category": "settings"
+		},
+		{
+			"command": "<pref>gamenotif",
+			"name": "gamenotif",
+			"display_name": "Game Notification",
+			"syntax": "<pref>gamenotif <game plain>",
+			"example": "<pref>gamenotif terraria",
+			"description": "Subscribe to game price changes in all stores.",
+			"long_description": "",
+			"parameters": [
+				{
+					"name": "game plain",
+					"description": "The plain (id) of the game you want to subscribe to notifications for. To find the plain of the game you're after, either visit the isthereanydeal website or do `<pref>search <search query>` and extract the plain.",
+					"values": []
+				}
+			],
+			"category": "deal_notifications"
+		},
+		{
+			"command": "<pref>search",
+			"name": "search",
+			"display_name": "Game Search",
+			"syntax": "<pref>search <search term>",
+			"example": "<pref>search star wars battlefront",
+			"description": "Search ITAD for games to find the plain to subscribe to.",
+			"long_description": "",
+			"parameters": [
+				{
+					"name": "search term",
+					"description": "Search term to search the ITAD website for.",
+					"values": []
+				}
+			],
+			"category": "deal_notifications"
 		}
 	]
 }

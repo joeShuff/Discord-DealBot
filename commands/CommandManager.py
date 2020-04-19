@@ -1,7 +1,7 @@
 import os
 import json
 
-from commands.game_search import get_deals_for
+from commands.game_search import get_deals_for, get_details_for
 from commands.help import send_help
 from commands.region import set_region_for_channel
 from commands.store_search import deals_for_store
@@ -34,6 +34,15 @@ def load_command_categories():
         loaded_json = json.loads(myfile.read().replace('\n', ''))
         return sorted(loaded_json['categories'], key=lambda x: x['order'])
 
+
+def get_command_by_id(id):
+    commands = load_commands()
+
+    for command in commands:
+        if command['name'] == id:
+            return command
+
+    return None
 
 def load_commands():
     with open(cwd + '/commands.json', 'r') as myfile:
@@ -69,6 +78,9 @@ async def process_command(bot, message):
     elif command == "free":
         sent = await channel.send("Loading deals...")
         await deals_for_store(bot, message, sent, sort="price:asc", free_only=True, region=get_region(channel.id))
+    elif command == "search":
+        sent = await channel.send("Loading information...")
+        await get_details_for(bot, message, sent, region=get_region(channel.id))
     elif command == "help":
         await send_help(bot, message)
     elif command == "region":

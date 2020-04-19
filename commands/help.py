@@ -7,12 +7,13 @@ cwd = os.getcwd()
 
 
 async def send_help(bot, message):
-    from commands.CommandManager import load_commands_and_categories
-    from commands.CommandManager import prefix
+    from commands.CommandManager import load_commands_and_categories, prefix, get_command_by_id
 
     parameters = message.content.replace("<pref>help".replace("<pref>", prefix), "").strip().split(" ")
 
     loaded_commands, loaded_categories = load_commands_and_categories()
+
+    help_command = get_command_by_id("help")
 
     if len(parameters[0]) == 0:
         embed_response = discord.Embed(title="DealBot Help", description="Hover on command for info", color=0x046EB2)
@@ -24,7 +25,7 @@ async def send_help(bot, message):
                 if command['category'] == category['name']:
                     cat_value += "- [**" + str(
                         command['display_name']) + "**](https://www.github.com/joeShuff/Discord-DealBot '" + str(
-                        command['description']) + "') `" + str(command['syntax'].replace("<pref>", prefix)) + "`\n"
+                        command['description']) + "') `" + str(help_command['command']).replace("<pref>", prefix) + " " + str(command['name']) + "`\n"
 
             if len(cat_value) == 0:
                 cat_value = "No commands in this category."

@@ -14,6 +14,36 @@ def get_distinct_game_plains(deals):
     return distinct_game_plains
 
 
+def get_detail_list_embed(deal_list, existing_embed=None):
+    distinct_game_plains = get_distinct_game_plains(deal_list)
+
+    if existing_embed == None:
+        existing_embed = discord.Embed(
+            color=0x046EB2,
+            title="Deals deals deals",
+            url="https://isthereanydeal.com",
+            timestamp=datetime.datetime.now()
+        )
+
+    existing_embed.set_image(url="https://d2uym1p5obf9p8.cloudfront.net/images/logo.png")
+    # results_embed.set_author(name="DealBot - Finding dealz for dayz", url="")
+    existing_embed.set_footer(text="information provided by isthereanydeal.com")
+
+    for game_plain in distinct_game_plains:
+        deals_texts = []
+        game_title = ""
+
+        for deal in deal_list:
+            if deal.plain != game_plain:
+                continue
+
+            game_title = deal.title
+
+        existing_embed.add_field(name=game_title, value="Plain is `" + str(game_plain) + "`", inline=False)
+
+    return existing_embed
+
+
 def get_deal_list_embed(deal_list, existing_embed=None):
     distinct_game_plains = get_distinct_game_plains(deal_list)
 
