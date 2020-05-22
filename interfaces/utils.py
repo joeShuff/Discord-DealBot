@@ -79,10 +79,17 @@ def get_deal_list_embed(deal_list, existing_embed=None):
 
             price_display += str(deal.get_price_new())
 
-            deals_texts.append(str(store_icon) + " " +
-                               str(deal.shop_name) + " - " +
-                               str(price_display) + " - " +
-                               "[BUY](" + str(deal.url_buy) + ")")
+            deal_text = str(store_icon) + " " +\
+                        str(deal.shop_name) + " - " +\
+                        str(price_display) + " - " +\
+                        "[BUY](" + str(deal.url_buy) + ")"
+
+            so_far = ""
+            for already_deal_text in deals_texts:
+                so_far += already_deal_text + "\n"
+
+            if (len(so_far + deal_text) < 1024):
+                deals_texts.append(deal_text)
 
         final_deals_text = ""
 
